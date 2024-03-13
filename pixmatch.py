@@ -103,15 +103,15 @@ def Leaderboard(what_to_do):
 
 def InitialPage():
     with st.sidebar:
-        st.subheader("🖼️ Pix Match:")
+        st.header("🖼️ Pix Match:")
         st.markdown(horizontal_bar, True)
 
-        # sidebarlogo = Image.open('sidebarlogo.jpg').resize((300, 420))
-        sidebarlogo = Image.open('sidebarlogo.jpg').resize((300, 390))
-        st.image(sidebarlogo, use_column_width='auto')
+        # sidebarlogo = Image.open('sidebarlogo.jpg').resize((300))
+        sidebarlogo = Image.open('sidebarlogo.jpg').resize((300, 480))
+        st.image(sidebarlogo, use_column_width='340')
 
     # ViewHelp
-    hlp_dtl = f"""<span style="font-size: 26px;">
+    hlp_dtl = f"""<span style="font-size:15px;">
     <ol>
     <li style="font-size:15px";>Game play opens with (a) a sidebar picture and (b) a N x N grid of picture buttons, where N=6:Easy, N=7:Medium, N=8:Hard.</li>
     <li style="font-size:15px";>You need to match the sidebar picture with a grid picture button, by pressing the (matching) button (as quickly as possible).</li>
@@ -125,15 +125,16 @@ def InitialPage():
     sc1, sc2 = st.columns(2)
     random.seed()
     GameHelpImg = vpth + random.choice(["MainImg1.jpg", "MainImg2.jpg", "MainImg3.jpg", "MainImg4.jpg"])
-    GameHelpImg = Image.open(GameHelpImg).resize((550, 550))
+    GameHelpImg = Image.open(GameHelpImg).resize((400, 400))
+    sc2.image(GameHelpImg, use_column_width='auto')
     sc2.image(GameHelpImg, use_column_width='auto')
 
-    sc1.subheader('Rules | Playing Instructions:')
+    sc1.subheader('เกมจับภาพ สายตาต้องไว')
     sc1.markdown(horizontal_bar, True)
     sc1.markdown(hlp_dtl, unsafe_allow_html=True)
     st.markdown(horizontal_bar, True)
 
-    author_dtl = "<strong>Happy Playing: 😎 Shawn Pereira: shawnpereira1969@gmail.com</strong>"
+    author_dtl = "<strong>Happy Playing: 😎 Shawn Pereira</strong>"
     st.markdown(author_dtl, unsafe_allow_html=True)
 
 def ReadPictureFile(wch_fl):
@@ -354,7 +355,6 @@ def Main():
             st.rerun()
 
         st.markdown(horizontal_bar, True)
-
 
 if 'runpage' not in mystate: mystate.runpage = Main
 mystate.runpage()
